@@ -12,14 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2022_12_08_032128) do
 
-  create_table "messeges", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
     t.bigint "room_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["room_id"], name: "index_messeges_on_room_id"
-    t.index ["user_id"], name: "index_messeges_on_user_id"
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "room_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 2022_12_08_032128) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "messeges", "rooms"
-  add_foreign_key "messeges", "users"
+  add_foreign_key "messages", "rooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "room_users", "rooms"
   add_foreign_key "room_users", "users"
 end
